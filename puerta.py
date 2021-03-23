@@ -17,7 +17,7 @@ class Puerta:
         self.__cerrada = CERRADA
 
     def __repr__(self):
-        """Devuelve la forma normla de una puerta."""
+        """Devuelve la forma normal de una puerta."""
         return f"Puerta('{self.color()}')"
 
     def color(self):
@@ -41,7 +41,8 @@ class Puerta:
         Modifica la cerradura de una puerta.
 
         La cerradura sólo puede recibir
-        instancias de la clase llave
+        instancias de la clase llave, o devolverá una \
+            excepción TypeError.
         Recibe: cerradura: Llave -> El cerradura de la puerta
         """
         if cerradura == None or isinstance(cerradura, Llave):
@@ -55,19 +56,23 @@ class Puerta:
     def __set_cerrada(self, cerrada):
         """
         Modifica el estado del atributo cerrada de una puerta.
-        Sólo puede recibir 1 ó 0.
+        Sólo puede recibir 1 ó 0., o devolverá una \
+            excepción ValueError.
 
         Recibe: cerrada: Bool -> El nuevo estado de cerrada.
         """
         if cerrada in (ABIERTA, CERRADA):
             self.__cerrada = cerrada
-        else: raise TypeError('La cerrada sólo recibe '\
-            'ABIERTA({ABIERTA}) o CERRADA({CERRADA}).')
+        else: raise ValueError('La cerrada sólo recibe '\
+            f'ABIERTA({ABIERTA}) o CERRADA({CERRADA}).')
 
     def poner(self, llave):
         """
         Pone una llave en la cerradura.
         Devuelve el propio objeto puerta.
+
+        El ejercicio no especificaba que hacer en caso \
+            de que la cerradura no estuviese vacía.
         """
         self.__set_cerradura(llave)
         return self
@@ -90,7 +95,7 @@ class Puerta:
         Abre la puerta, si es posible.
 
         Devuelve True si se ha poddo abrir
-        (si ya estaba abierta) o False en caso contrario.
+        (o si ya estaba abierta) o False en caso contrario.
         """
         if self.cerradura() == None:
             return False
@@ -103,6 +108,8 @@ class Puerta:
     def cerrar(self):
         """
         Cierra la puerta, si está abierta.
+
+        No recuerdo si debía devolver algo, o nada.
         """
         if self.cerrada() == ABIERTA:
             self.__set_cerrada(CERRADA)

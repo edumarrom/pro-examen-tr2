@@ -1,7 +1,14 @@
 from soporte import Soporte
 
 class Televisor:
-    """Representa un televisor y su funcionamiento."""
+    """
+    Representa un televisor con reproductor multimedia. \
+    Tiene la capacidad de sintonizar canales, modificar \
+    su volumen y de reproducir contenido multimedia desde \
+    un soporte de almecenamiento extraíble (No incluido).
+
+    El televisor puede estar apagado o encendido.
+    """
     def __init__(self, canal = 1, volumen = 20, encendido = False):
         self.__set_canal(canal)
         self.__set_volumen(volumen)
@@ -9,7 +16,7 @@ class Televisor:
         self.__soporte = None
 
     def __repr__(self):
-        """Devuelve la forma normla de un televisor."""
+        """Devuelve la forma normal de un televisor."""
         return f"Televisor({self.canal()}, "\
             f"{self.volumen()}, {self.encendido()})"
 
